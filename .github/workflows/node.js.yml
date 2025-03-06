@@ -27,5 +27,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm ci
-    - run: npm run test
+    - name: API Production Test Run
+      env:
+        BASE_URL: ${{ vars.BASE_URL }}
+        TOKEN: ${{ secrets.TOKEN }}
+      run: |
+          npm ci
+          npm run test
