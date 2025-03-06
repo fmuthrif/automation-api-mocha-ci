@@ -1,0 +1,11 @@
+{
+    "getListUser": {
+        "description": "GET List of Users",
+        "positive": {
+            "validData": "As a User, I can get list of users"
+        },
+        "negative": {
+            "emptyAuth": "as a User, I cannot get list of users with empty Auth"
+        }
+    }
+}
