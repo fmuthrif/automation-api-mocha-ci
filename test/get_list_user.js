@@ -12,7 +12,7 @@ let
 describe(`@GET ${testCase.getListUser.description}`, async () => {
     describe(`@GET ${testCase.getListUser.description} - Positive Case`, async () => {
         it(testCase.getListUser.positive.validData, async () => {
-            const response = await gorest.getListUser(pathGetListUser);
+            const response = await gorest.getListUser(pathGetListUser, process.env.TOKEN);
             assert(response.status).to.equal(200);
             assert(response.body).to.be.an('array').that.is.not.empty;
             response.body.forEach(user => {
@@ -21,10 +21,10 @@ describe(`@GET ${testCase.getListUser.description}`, async () => {
         });
     });
     describe(`@GET ${testCase.getListUser.description} - Negative Case`, async () => {
-        it.only(testCase.getListUser.negative.emptyAuth, async () => {
-            const response = await gorest.getListUser(pathGetListUser).unset('Authorization');
+        it.only(testCase.getListUser.negative.invalidAuth, async () => {
+            const response = await gorest.getListUser(pathGetListUser, 'a');
             assert(response.status).to.equal(401);
-            assert(response.body.message).to.equal('Authentication failed');
+            assert(response.body.message).to.equal('Invalid token');
         });
     });
 });

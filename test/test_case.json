@@ -5,7 +5,7 @@
             "validData": "As a User, I can get list of users"
         },
         "negative": {
-            "emptyAuth": "as a User, I cannot get list of users with empty Auth"
+            "invalidAuth": "as a User, I cannot get list of users with an invalid auth"
         }
     }
 }
